@@ -10,9 +10,16 @@ resource "azurerm_virtual_network" "home_network" {
   resource_group_name = azurerm_resource_group.home_resource_group.name
 }
 
-resource "azurerm_subnet" "private_subnet" {
-  name                 = var.private_subnet
+resource "azurerm_subnet" "private_subnet1" {
+  name                 = var.private_subnet1
   resource_group_name  = azurerm_resource_group.home_resource_group.name
   virtual_network_name = azurerm_virtual_network.home_network.name
-  address_prefixes     = ["10.0.2.0/24"]
+  address_prefixes     = ["10.0.0.0/17"]
+}
+
+resource "azurerm_subnet" "private_subnet2" {
+  name                 = var.private_subnet2
+  resource_group_name  = azurerm_resource_group.home_resource_group.name
+  virtual_network_name = azurerm_virtual_network.home_network.name
+  address_prefixes     = ["10.0.128.0/17"]
 }

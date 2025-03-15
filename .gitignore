@@ -2,3 +2,5 @@
 */terraform.tfstate
 */terraform.tfstate.*
 */.terraform.lock.hcl
+*/vm_key.*
+*/vm_key

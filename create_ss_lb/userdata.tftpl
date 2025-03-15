@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "Hello, this is a startup script!" > /var/log/startup.log
+
+echo "[Info] Installing apache2"
+sudo apt-get update 
+sudo apt-get install apache2 -y
+sudo systemctl start apache2
+sudo systemctl enable apache2
+
+# Get the host IP address
+HOST_IP=$(hostname -I | awk '{print $1}')
+
+# Create an HTML file displaying the host IP
+echo "<html><head><title>Host Info</title></head><body><h1>Host IP: $HOST_IP</h1><h1>${heading_one}</h1></body></html>" > /var/www/html/index.html
+
+echo "[Info] Reloading apache2"
+sudo service apache2 reload

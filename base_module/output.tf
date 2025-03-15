@@ -7,6 +7,10 @@ output "home_resource_group_location" {
   value = azurerm_resource_group.home_resource_group.location
 }
 
-output "private_subnet_id" {
-  value = azurerm_subnet.private_subnet.id
+output "private_subnet_1_id" {
+  value = azurerm_subnet.private_subnet1.id
+}
+
+output "private_subnet_2_id" {
+  value = azurerm_subnet.private_subnet2.id
 }
