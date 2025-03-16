@@ -20,8 +20,8 @@ resource "azurerm_lb" "home_lb" {
 }
 
 # Backend Address Pool
-resource "azurerm_lb_backend_address_pool" "home_lb_backens_address_pool" {
-  name            = "home_lb_backens_address_pool"
+resource "azurerm_lb_backend_address_pool" "home_lb_backend_address_pool" {
+  name            = "home_lb_backend_address_pool"
   loadbalancer_id = azurerm_lb.home_lb.id
 }
 
@@ -41,6 +41,6 @@ resource "azurerm_lb_rule" "home_http_lb_rule" {
   frontend_port                  = 80
   backend_port                   = 80
   frontend_ip_configuration_name = "home-lb-frontend"
-  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.home_lb_backens_address_pool.id]
+  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.home_lb_backend_address_pool.id]
   probe_id                       = azurerm_lb_probe.home_lb_probe.id
 }
