@@ -15,7 +15,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "azure_ss" {
   resource_group_name = local.resource_group_name
   location            = local.location
   sku                 = "Standard_B2ats_v2" #"Standard_B2als_v2"   "Standard_B2ats_v2"
-  instances           = 2
+  instances           = 1
   admin_username      = "adminuser"
   priority            = "Spot"
   eviction_policy     = "Delete"
@@ -47,13 +47,12 @@ resource "azurerm_linux_virtual_machine_scale_set" "azure_ss" {
       name                                   = "internal"
       subnet_id                              = local.subnet_id1
       primary                                = true
-      
       load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.home_lb_backend_address_pool.id]
 
       #Its working, it assigns public ip to VM
-      # public_ip_address {
-      #   name = "acceptanceTestPublicIp1"
-      # }
+      public_ip_address {
+        name = "acceptanceTestPublicIp1"
+      }
 
     }
   }
